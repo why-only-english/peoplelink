@@ -22,9 +22,10 @@ public class MainServlet extends HttpServlet {
 
         // Main
         PrintWriter out = response.getWriter();
-            out.println("<html><body>");
-            out.println("<h1>" + message + today +"</h1>");
-            out.println("</body></html>");
+        out.println("<html><body>");
+        out.println("<h1>" + message +"</h1>");
+        out.println("<h1>" + today +"</h1>");
+        out.println("</body></html>");
     }
 
     public void destroy() {

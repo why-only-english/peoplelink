@@ -2,11 +2,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>JSP - Main Page</title>
+    <title>PeopleLink</title>
 </head>
 <body>
-<h1><%= "Main Page!" %>
-</h1>
+    <script>
+        location.href = 'login.jsp';  // login.jsp로 이동
+    </script>
 <br/>
 <a href="main-servlet">Main Servlet</a>
 </body>
