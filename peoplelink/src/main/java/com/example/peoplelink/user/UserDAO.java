@@ -28,9 +28,9 @@ public class UserDAO {
     }
 
     public int login(String userID, String userPassword) {
-        String SQL = "SELECT userPassword FROM USER WHERE userID = ?";
+        String SQL1 = "SELECT userPassword FROM USER WHERE userID = ?";
         try {
-            pstmt = conn.prepareStatement(SQL);
+            pstmt = conn.prepareStatement(SQL1);
             pstmt.setString(1, userID);
             rs= pstmt.executeQuery();  // 결과 담기
             if (rs.next()) {
@@ -45,5 +45,21 @@ public class UserDAO {
             e.printStackTrace();
         }
         return -2;  // 데이터베이스 오류
+    }
+
+    public int join(User user) {
+        String SQL2 = "INSERT INTO USER VALUES (?,?,?,?)";
+        // INSERT 문 일 경우 0보다 큰 값이 나오기 때문에 return 값 -1 일 때만 오류 처리
+        try {
+            pstmt = conn.prepareStatement(SQL2);
+            pstmt.setString(1, user.getUserID());
+            pstmt.setString(2, user.getUserPassword());
+            pstmt.setString(3, user.getUserNickname());
+            pstmt.setString(4, user.getUserEmail());
+            return pstmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return -1;  // 데이터베이스 오류
     }
 }
