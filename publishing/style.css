@@ -1,0 +1,356 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* 로그인 페이지 css */
+
+#loginContainer {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    width: 800px;
+    height: 600px;
+    display: flex;
+    
+
+}
+
+#leftContainer {
+    width: 400px;
+    height: 600px;
+    margin-left: 12px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+
+}
+
+#rightContainer {
+    width: 350px;
+    height: 600px;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+#logo {
+    width: 240px;
+    margin-bottom: 32px;
+}
+
+.loginBox {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.loginBox input {
+    width: 258px;
+    height: 36px;
+    padding: 12px;
+    margin-top: 8px;
+    border-radius: 4px;
+    border: #67B5FA;
+    border: 1px solid #aaa;
+    background-color: rgb(235, 232, 232);
+}
+
+.loginBtn {
+    border-radius: 6px;
+    border: 0;
+    width: 258px;
+    height: 32px;
+    background-color: #67B5FA;
+    color: white;
+    margin-top: 12px;
+}
+
+#membershipContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 350px;
+    height: 60px;
+    margin-top: 16px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.join-membership {
+    color: #67B5FA;
+    text-decoration: none;
+    margin-left: 6px;
+}
+
+
+/* 회원가입 페이지 */
+
+#accountsContainer {
+    width: 350px;
+    height: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 0 0 0;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+
+}
+
+
+.accountBox {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.accountBox input {
+    width: 258px;
+    height: 36px;
+    padding: 12px;
+    margin-top: 8px;
+    border-radius: 4px;
+    border: #67B5FA;
+    border: 2px solid #aaa;
+    background-color: rgb(235, 232, 232);
+}
+
+.account-btn {
+    border-radius: 6px;
+    border: 0;
+    width: 258px;
+    height: 32px;
+    background-color: #67B5FA;
+    color: white;
+    margin-top: 12px;
+}
+.join-login {
+    color: #67B5FA;
+    text-decoration: none;
+    margin-left: 6px;
+}
+/* 메인 페이지 css*/
+
+#mainContainer {
+    height: 2000px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex; 
+}
+
+#navContainer {
+    background-color: white;
+    padding: 40px 16px 0 16px;
+    position: sticky;
+    width: 286px;
+    top: 4%;
+    height: 100vh;
+    border-right: 1px solid #aaa;
+
+}
+
+#navContainer li {
+    list-style-type: none;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    height: 50px;
+    width: 240px;
+
+}
+
+.nav-icon {
+    width: 30px;
+    height: 30px;
+    margin-left: 12px;
+    vertical-align: middle;
+
+}
+
+.nav-text{
+    font-size: 16px;
+    margin-left: 16px;
+}
+
+#navContainer li:hover{
+    background-color: #D9D9D9;
+    border-radius: 12px;
+}
+
+#postContainer{
+    margin-left: 32px;
+    width: 630px;
+    display: flex;
+    flex-direction: column;
+}
+
+.post-container{
+    width: 468px;
+    height: 760px;
+    padding: 16px 0 0 0;
+    position: relative;
+    margin-bottom: 24px;
+}
+.post-nickname{
+    margin-left: 8px;
+    font-size: 16px;
+}
+.more-btn{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 16px;
+    top: 20px;
+}
+.post-img-box{
+    width: 468px;
+    height: 468px;
+    margin-top: 16px;
+    border: 1px solid;
+}
+
+.icon-container{
+    margin-top: 12px;
+}
+
+.contents-container{
+    margin-top: 12px;
+    width: 468px;
+    height: 150px;
+    border: 1px solid ;
+    padding: 16px;
+}
+
+/* 게시글 만들기 css */
+
+#createContainer{
+    display: flex;
+    width: 833px;
+    height: 535px;
+    border: 1px solid;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 120px;
+    flex-direction: column;
+    border-radius: 15px;
+    position: relative;   
+}
+
+.title{
+    font-size: 24px;
+    height: 42px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.share-btn{
+    position: absolute;
+    width: 48;
+    height: 18px;
+    color: #67B5FA;
+    border: none;
+    background-color: white;
+    font-size: 18px;
+    top: 10px;
+    right: 20px;
+}
+.share-btn:hover{
+    color: black;
+}
+.input-container{
+    display: flex;
+    flex-direction: row;
+}
+.img-input{
+    width: 493px;
+    height: 493px;
+    padding: 24px;
+    border-top: 1px solid;
+    border-right: 1px solid;
+}
+
+
+.text-input{
+    width: 340px;
+    height: 408px;
+    padding: 24px;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+}
+
+
+
+/* 프로필 페이지 css */
+
+
+#profileContainer{
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+}
+
+#myProfile{
+    margin-left: 76px;
+    width: 730px;
+    display: flex;
+    padding: 24px 80px 0 0;
+    flex-direction: column;
+    margin-top: 24px;
+}
+
+.data-container{
+    display: flex;
+}
+
+
+.my-img{
+    width: 150px;
+    height: 150px;
+    margin-left: 120px;
+    border-radius: 50%;
+    background-color: #aaa;
+}
+
+.right-data-container{
+    display: flex;
+    flex-direction: column;
+    margin-left: 60px;
+    margin-top: 36px;
+    line-height: 36px;
+    font-size: 20px;
+}
+
+.my-post-list {
+    margin-top: 86px;
+    padding: 10px;
+    width: 630px;
+    margin-left: 50px;
+    justify-content:  center;
+    border: 1px solid #ccc;
+    background-color: #f0f0f0;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap; /* 다음 줄로 넘어가게 설정 */
+    justify-content: flex-start; /* 왼쪽 정렬 */
+}
+
+.post-box{
+    width: 194px;
+    height: 194px;
+    background-color: #67B5FA;
+}
