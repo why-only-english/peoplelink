@@ -23,8 +23,8 @@
                     접속하기 <span class="caret"></span>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item active" href="login.jsp">로그인</a>
-                    <a class="dropdown-item" href="join.jsp">회원가입</a>
+                    <a class="dropdown-item" href="login.jsp">로그인</a>
+                    <a class="dropdown-item active" href="join.jsp">회원가입</a>
                 </div>
             </li>
         </ul>

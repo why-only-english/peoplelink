@@ -15,6 +15,17 @@
 </head>
 <body>
 <%
+    String userID = null;
+    if (session.getAttribute("userID") != null) {
+        userID = (String) session.getAttribute("userID");
+    }
+    if (userID != null) {
+        PrintWriter script = response.getWriter();
+        script.println("<script>");
+        script.println("alert('이미 로그인이 되어있습니다.');");
+        script.println("location.href = 'main.jsp'");
+        script.println("</script>");
+    }
     // 사용자가 입력 안 한 항목이 있을 때
     if (user.getUserID() == null || user.getUserPassword() == null
             || user.getUserNickname() == null || user.getUserEmail() == null) {
@@ -36,12 +47,13 @@
             script.println("history.back()");  // 이전 페이지로 돌려주기
             script.println("</script>");
         }
-        // 회원가입 완료 -> 로그인 페이지로 이동
+        // 회원가입 완료 -> 메인 페이지로 이동
         else {
+            session.setAttribute("userID", user.getUserID());  // 세션 부여
             PrintWriter script = response.getWriter();
             script.println("<script>");
             script.println("alert('회원가입이 완료되었습니다.');");
-            script.println("history.back()");  // 이전 페이지로 돌려주기
+            script.println("location.href = 'main.jsp'");  // 메인 페이지로 돌려주기
             script.println("</script>");
         }
     }

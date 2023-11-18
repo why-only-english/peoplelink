@@ -13,11 +13,23 @@
 </head>
 <body>
 <%
+  String userID = null;
+  if (session.getAttribute("userID") != null) {
+    userID = (String) session.getAttribute("userID");
+  }
+  if (userID != null) {
+    PrintWriter script = response.getWriter();
+    script.println("<script>");
+    script.println("alert('이미 로그인이 되어있습니다.');");
+    script.println("location.href = 'main.jsp'");
+    script.println("</script>");
+  }
   UserDAO userDAO = new UserDAO();
   // login에서 설정해 준 각각의 결괏값이 result에 담기게 됨
   int result = userDAO.login(user.getUserID(), user.getUserPassword());
   // 로그인 성공
   if (result == 1) {
+    session.setAttribute("userID", user.getUserID());  // 세션 부여
     PrintWriter script = response.getWriter();
     script.println("<script>");
     script.println("location.href = 'main.jsp'");
