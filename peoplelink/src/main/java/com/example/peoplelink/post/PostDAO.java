@@ -109,4 +109,27 @@ public class PostDAO {
         }
         return false;
     }
+
+    // 게시글 보기
+    public Post getPost(int postID) {
+        String SQL8 = "SELECT * FROM POST WHERE postID = ?";
+        try {
+            PreparedStatement pstmt = conn.prepareStatement(SQL8);
+            pstmt.setInt(1, postID);
+            rs = pstmt.executeQuery();
+            if (rs.next()) {
+                Post post = new Post();
+                post.setPostID(rs.getInt(1));
+                post.setPostTitle(rs.getString(2));
+                post.setUserID(rs.getString(3));
+                post.setPostDate(rs.getString(4));
+                post.setPostContent(rs.getString(5));
+                post.setPostAvailable(rs.getInt(6));
+                return post;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
