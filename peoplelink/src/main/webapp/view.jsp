@@ -101,7 +101,7 @@
                 if (userID != null && userID.equals(post.getUserID())) {
             %>
                     <a href="update.jsp?postID=<%= postID %>" class="btn btn-primary">수정</a>
-                    <a href="deleteAction.jsp?postID=<%= postID %>" class="btn btn-primary">삭제</a>
+                    <a onclick="return confirm('게시글을 삭제하시겠어요?')" href="deleteAction.jsp?postID=<%= postID %>" class="btn btn-primary">삭제</a>
             <%
                 }
             %>
