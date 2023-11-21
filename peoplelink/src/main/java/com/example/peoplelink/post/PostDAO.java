@@ -147,4 +147,16 @@ public class PostDAO {
         }
         return -1;  // 데이터베이스 오류
     }
+
+    public int delete(int postID) {
+        String SQL10 = "UPDATE POST SET postAvailable = 0 WHERE postID = ?";
+        try {
+            PreparedStatement pstmt = conn.prepareStatement(SQL10);
+            pstmt.setInt(1, postID);
+            return pstmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return -1;  // 데이터베이스 오류
+    }
 }
