@@ -132,4 +132,19 @@ public class PostDAO {
         }
         return null;
     }
+
+    // 게시글 수정
+    public int update(int postID, String postTitle, String postContent) {
+        String SQL9 = "UPDATE POST SET postTitle = ?, postContent = ? WHERE postID = ?";
+        try {
+            PreparedStatement pstmt = conn.prepareStatement(SQL9);
+            pstmt.setString(1, postTitle);
+            pstmt.setString(2, postContent);
+            pstmt.setInt(3, postID);
+            return pstmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return -1;  // 데이터베이스 오류
+    }
 }
