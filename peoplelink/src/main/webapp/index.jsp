@@ -6,7 +6,7 @@
 </head>
 <body>
     <script>
-        location.href = 'main.jsp';  // login.jsp로 이동
+        location.href = '/login.jsp';  // login.jsp로 이동
     </script>
 <br/>
 <a href="main-servlet">Main Servlet</a>

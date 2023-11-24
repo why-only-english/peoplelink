@@ -4,62 +4,39 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>PeopleLink</title>
+    <link rel="stylesheet" href="./css/join.css">
+
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <a class="navbar-brand" href="index.jsp">PeopleLink</a>
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="navbar-nav">
-            <li class="nav-item"><a class="nav-link" href="index.jsp">메인</a></li>
-            <li class="nav-item"><a class="nav-link" href="bbs.jsp">게시판</a></li>
-        </ul>
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="false">
-                    접속하기 <span class="caret"></span>
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="login.jsp">로그인</a>
-                    <a class="dropdown-item active" href="join.jsp">회원가입</a>
-                </div>
-            </li>
-        </ul>
+<div id="accountsContainer">
+    <img id="logo" src="./png/serviceLogo.png" alt="peopleLink 로고">
+    <p>추억을 저장해요</p>
+    <form class="accountBox" action="joinAction.jsp" method="POST">
+        <input type="text" name="userID" placeholder="이메일" required>
+        <input type="password" name="userPassword" placeholder="비밀번호" required>
+        <input type="password" name="confirmation" placeholder="비밀번호확인" required>
+        <input type="text" name="userNickname" placeholder="닉네임" required>
+        <button type="submit" class="account-btn">가입</button>
+    </form>
+    <div>
+            <span>
+                계정이 있으신가요??
+                <a href="./login.jsp" class="join-login">로그인</a>
+            </span>
     </div>
-</nav>
-<div class="container">
-    <div class="col-lg-4"></div>
-    <div class="col-lg-4">
-        <div class="jumbotron" style="padding-top: 20px;">
-            <form method="post" action="joinAction.jsp">
-                <h3 style="text-align: center;">회원가입 화면</h3>
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="아이디" name="userID" maxlength="20">
-                </div>
-                <div class="form-group">
-                    <input type="password" class="form-control" placeholder="비밀번호" name="userPassword" maxlength="20">
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="닉네임" name="userNickname" maxlength="20">
-                </div>
-                <div class="form-group">
-                    <input type="email" class="form-control" placeholder="이메일" name="userEmail" maxlength="50">
-                </div>
-                <input type="submit" class="btn btn-primary form-control" value="회원가입">
-            </form>
-        </div>
-    </div>
-    <div class="col-lg-4"></div>
 </div>
-
-<%--    <script src="js/jquery-3.7.1.min.map"></script>--%>
-<%--    <link rel="stylesheet" href="css/bootstrap.css">--%>
-<%--    <script src="js/bootstrap.js"></script>--%>
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<%--        <input type="text" class="form-control" placeholder="아이디" name="userID" maxlength="20">--%>
+<%--    </div>--%>
+<%--    <div class="form-group">--%>
+<%--        <input type="password" class="form-control" placeholder="비밀번호" name="userPassword" maxlength="20">--%>
+<%--    </div>--%>
+<%--    <div class="form-group">--%>
+<%--        <input type="text" class="form-control" placeholder="닉네임" name="userNickname" maxlength="20">--%>
+<%--    </div>--%>
+<%--    <div class="form-group">--%>
+<%--        <input type="email" class="form-control" placeholder="이메일" name="userEmail" maxlength="50">--%>
+<%--    </div>--%>
+<%--    <input type="submit" class="btn btn-primary form-control" value="회원가입">--%>
+</div>
 </body>
 </html>

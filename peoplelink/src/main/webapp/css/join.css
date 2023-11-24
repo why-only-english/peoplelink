@@ -1,0 +1,62 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+#logo {
+    width: 240px;
+    margin-bottom: 32px;
+}
+
+#accountsContainer {
+    width: 350px;
+    height: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 0 0 0;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+
+}
+
+
+.accountBox {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.accountBox input {
+    width: 258px;
+    height: 36px;
+    padding: 12px;
+    margin-top: 8px;
+    border-radius: 4px;
+    border: #67B5FA;
+    border: 2px solid #aaa;
+    background-color: rgb(235, 232, 232);
+}
+
+.account-btn {
+    border-radius: 6px;
+    border: 0;
+    width: 258px;
+    height: 32px;
+    background-color: #67B5FA;
+    color: white;
+    margin-top: 12px;
+}
+.join-login {
+    color: #67B5FA;
+    text-decoration: none;
+    margin-left: 6px;
+}
