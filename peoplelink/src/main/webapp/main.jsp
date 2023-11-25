@@ -1,66 +1,60 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="java.io.PrintWriter" %>
+<%@ page import="com.example.peoplelink.post.PostDAO" %>
+<%@ page import="com.example.peoplelink.post.Post" %>
+<%@ page import="java.util.ArrayList" %>
 <!DOCTYPE html>
 <html>
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>PeopleLink</title>
-  <link rel="stylesheet" href="">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PeopleLink</title>
+    <link rel="stylesheet" href="./css/main.css">
 </head>
 <body>
-  <%
-    String userID = null;
-    if (session.getAttribute("userID") != null) {
-      userID = (String) session.getAttribute("userID");
-    }
-  %>
-  <%@ include file="navbar.jsp" %>
-
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <a class="navbar-brand" href="index.jsp">PeopleLink</a>
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="navbar-nav">
-        <li class="nav-item active"><a class="nav-link" href="index.jsp">메인</a></li>
-        <li class="nav-item"><a class="nav-link" href="bbs.jsp">게시판</a></li>
-      </ul>
-      <%
-        // 로그인이 되어 있지 않다면
-        if(userID == null) {
-      %>
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
-             aria-haspopup="true" aria-expanded="false">
-            접속하기 <span class="caret"></span>
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="login.jsp">로그인</a>
-            <a class="dropdown-item" href="join.jsp">회원가입</a>
-          </div>
-        </li>
-      </ul>
-      <%
-        } else {
-      %>
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
-             aria-haspopup="true" aria-expanded="false">
-            회원관리 <span class="caret"></span>
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="logoutAction.jsp">로그아웃</a>
-          </div>
-        </li>
-      </ul>
-      <%
+<div style="display: flex;">
+    <%
+        String userID = null;
+        if (session.getAttribute("userID") != null) {
+            userID = (String) session.getAttribute("userID");
         }
-      %>
+        int pageNumber = 1;
+        if (request.getParameter("pageNumber") != null) {
+            pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
+        }
+    %>
+    <%@ include file="navbar.jsp" %>
+
+    <div style="margin-left: 32px;
+    width: 630px;
+    display: flex;
+    flex-direction: column;">
+        <%
+            PostDAO postDAO = new PostDAO();
+            ArrayList<Post> list = postDAO.getList(pageNumber);
+
+            for (int i = 0; i < list.size(); i++) {
+        %>
+        <div class="post-container">
+            <img src="./png/account_box.png" alt="프로필 이미지" class="nav-icon">
+            <span class="post-nickname"><%= list.get(i).getUserID() %></span>
+            <span>•몇시간 전</span>
+            <img src="./png/more.png" alt="더보기 버튼" class="more-btn">
+            <div class="post-img-box">
+                asd
+            </div>
+            <div class="icon-container">
+                <img src="./png/heart.png" alt="좋아요 버튼" class="nav-icon">
+                <img src="./png/chat.png" alt="댓글 버튼" class="nav-icon">
+            </div>
+            <div class="contents-container">
+                <h2><a href="view.jsp?postID=<%= list.get(i).getPostID() %>"><%= list.get(i).getPostTitle() %></a></h2>
+                <p><%= list.get(i).getPostContent() %></p>
+            </div>
+        </div>
+        <%
+            }
+        %>
     </div>
-  </nav>
+</div>
 </body>
 </html>
