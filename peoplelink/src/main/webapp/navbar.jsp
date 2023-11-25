@@ -23,8 +23,10 @@
 
             </li>
             <li>
-                <img src="./png/add_box.png" alt="만들기 버튼" class="nav-icon">
-                <span class="nav-text">만들기</span>
+                <a href="write.jsp">
+                    <img src="./png/add_box.png" alt="만들기 버튼" class="nav-icon">
+                    <span class="nav-text">만들기</span>
+                </a>
             </li>
             <li>
                 <a href="./profile.jsp">
