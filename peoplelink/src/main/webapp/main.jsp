@@ -54,8 +54,9 @@
 
             <div class="more-options" style="display: none;">
                 <% if (userID != null && userID.equals(list.get(i).getUserID())) { %>
-                <a href="update.jsp?postID=<%= list.get(i).getPostID() %>" >수정</a>
-                <a onclick="return confirm('게시글을 삭제하시겠어요?')" href="deleteAction.jsp?postID=<%= list.get(i).getPostID() %>">삭제</a>
+                <a href="update.jsp?postID=<%= list.get(i).getPostID() %>">수정</a>
+                <a onclick="return confirm('게시글을 삭제하시겠어요?')"
+                   href="deleteAction.jsp?postID=<%= list.get(i).getPostID() %>">삭제</a>
                 <% } %>
             </div>
 
@@ -67,8 +68,10 @@
                 <img src="./png/chat.png" alt="댓글 버튼" class="nav-icon">
             </div>
             <div class="contents-container">
-                <h2><a href="view.jsp?postID=<%= list.get(i).getPostID() %>"><%= list.get(i).getPostTitle() %>
-                </a></h2>
+                <h2>
+                    <a href="view.jsp?postID=<%= list.get(i).getPostID() %>"><%= list.get(i).getPostTitle() %>
+                    </a>
+                </h2>
                 <p><%= list.get(i).getPostContent() %>
                 </p>
             </div>
