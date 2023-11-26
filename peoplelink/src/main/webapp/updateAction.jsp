@@ -68,7 +68,7 @@
           PrintWriter script = response.getWriter();
           script.println("<script>");
           script.println("alert('글 수정이 완료되었습니다.');");
-          script.println("location.href = 'bbs.jsp'");  // 게시판 페이지로 돌려주기
+          script.println("location.href = 'main.jsp'");  // 게시판 페이지로 돌려주기
           script.println("</script>");
         }
       }
