@@ -1,0 +1,50 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+#navContainer {
+    background-color: white;
+    padding: 40px 16px 0 16px;
+    position: sticky;
+    width: 286px;
+    top: 4%;
+    height: 100vh;
+    border-right: 1px solid #aaa;
+
+}
+
+#navContainer li {
+    list-style-type: none;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    height: 50px;
+    width: 240px;
+
+}
+
+.nav-icon {
+    width: 30px;
+    height: 30px;
+    margin-left: 12px;
+    vertical-align: middle;
+
+}
+
+.nav-text{
+    font-size: 16px;
+    margin-left: 16px;
+}
+
+#navContainer li:hover{
+    background-color: #D9D9D9;
+    border-radius: 12px;
+}
+
+
+#logo {
+    width: 240px;
+    margin-bottom: 32px;
+}

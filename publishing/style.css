@@ -242,13 +242,15 @@
     display: flex;
     width: 833px;
     height: 535px;
-    border: 1px solid;
     margin-left: auto;
     margin-right: auto;
     margin-top: 120px;
     flex-direction: column;
     border-radius: 15px;
     position: relative;   
+
+    border: 1px solid;
+
 }
 
 .title{
@@ -260,7 +262,7 @@
 }
 .share-btn{
     position: absolute;
-    width: 48;
+    width: 48px;
     height: 18px;
     color: #67B5FA;
     border: none;
@@ -276,21 +278,35 @@
     display: flex;
     flex-direction: row;
 }
-.img-input{
+.img-input input{
     width: 493px;
     height: 493px;
     padding: 24px;
-    border-top: 1px solid;
+    outline: none;
     border-right: 1px solid;
+    border-top: 1px solid;
+
 }
 
-
-.text-input{
-    width: 340px;
-    height: 408px;
+.title-input input{
+    width: 339px;
+    height: 85px;
     padding: 24px;
+    outline: none;
+    border: none;
+    margin-left: auto;
     border-top: 1px solid;
     border-bottom: 1px solid;
+
+
+}
+.text-input input{
+    width: 333px;
+    height: 405px;
+    padding: 24px;
+    outline: none;
+    border: none;
+
 }
 
 
