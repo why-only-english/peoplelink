@@ -56,4 +56,6 @@ public class Post {
     public void setPostAvailable(int postAvailable) {
         this.postAvailable = postAvailable;
     }
+
+
 }

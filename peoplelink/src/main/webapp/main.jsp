@@ -10,6 +10,18 @@
     <title>PeopleLink</title>
     <link rel="stylesheet" href="./css/main.css">
 </head>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var moreBtns = document.querySelectorAll(".more-btn");
+
+        moreBtns.forEach(function (btn) {
+            btn.addEventListener("click", function () {
+                var moreOptions = this.closest(".post-container").querySelector(".more-options");
+                moreOptions.style.display = moreOptions.style.display === "none" ? "flex" : "none";
+            });
+        });
+    });
+</script>
 <body>
 <div style="display: flex;">
     <%
@@ -39,6 +51,14 @@
             <span class="post-nickname"><%= list.get(i).getUserID() %></span>
             <span>•몇시간 전</span>
             <img src="./png/more.png" alt="더보기 버튼" class="more-btn">
+
+            <div class="more-options" style="display: none;">
+                <% if (userID != null && userID.equals(list.get(i).getUserID())) { %>
+                <a href="update.jsp?postID=<%= list.get(i).getPostID() %>" >수정</a>
+                <a onclick="return confirm('게시글을 삭제하시겠어요?')" href="deleteAction.jsp?postID=<%= list.get(i).getPostID() %>">삭제</a>
+                <% } %>
+            </div>
+
             <div class="post-img-box">
                 asd
             </div>
@@ -47,8 +67,10 @@
                 <img src="./png/chat.png" alt="댓글 버튼" class="nav-icon">
             </div>
             <div class="contents-container">
-                <h2><a href="view.jsp?postID=<%= list.get(i).getPostID() %>"><%= list.get(i).getPostTitle() %></a></h2>
-                <p><%= list.get(i).getPostContent() %></p>
+                <h2><a href="view.jsp?postID=<%= list.get(i).getPostID() %>"><%= list.get(i).getPostTitle() %>
+                </a></h2>
+                <p><%= list.get(i).getPostContent() %>
+                </p>
             </div>
         </div>
         <%

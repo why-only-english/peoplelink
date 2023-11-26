@@ -12,7 +12,7 @@
     <img id="logo" src="./png/serviceLogo.png" alt="peopleLink 로고">
     <p>추억을 저장해요</p>
     <form class="accountBox" action="joinAction.jsp" method="POST">
-        <input type="text" name="userID" placeholder="이메일" required>
+        <input type="text" name="userID" placeholder="아이디" required>
         <input type="password" name="userPassword" placeholder="비밀번호" required>
         <input type="password" name="confirmation" placeholder="비밀번호확인" required>
         <input type="text" name="userNickname" placeholder="닉네임" required>
