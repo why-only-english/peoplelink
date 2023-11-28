@@ -8,7 +8,7 @@ public class Post {
     private String postDate;
     private String postContent;
     private int postAvailable;
-    private int CommentID;
+    private int commentID;
     private String commentContent;
 
 
@@ -63,11 +63,11 @@ public class Post {
     }
 
     public int getCommentID() {
-        return CommentID;
+        return commentID;
     }
 
-    public void setCommentID(int CommentID) {
-        this.CommentID = CommentID;
+    public void setCommentID(int commentID) {
+        this.commentID = commentID;
     }
 
     public String getCommentContent() {
