@@ -1,5 +1,6 @@
 package com.example.peoplelink.post;
 
+
 public class Post {
 
     private int postID;
@@ -8,10 +9,11 @@ public class Post {
     private String postDate;
     private String postContent;
     private int postAvailable;
-    private int commentID;
-    private String commentContent;
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 22e49f21a6aa7660f2fd2b661c1f4e8ba26ca2ae
 
 
     public int getPostID() {
@@ -62,19 +64,9 @@ public class Post {
         this.postAvailable = postAvailable;
     }
 
-    public int getCommentID() {
-        return commentID;
-    }
-
-    public void setCommentID(int commentID) {
-        this.commentID = commentID;
-    }
-
-    public String getCommentContent() {
-        return commentContent;
-    }
-
-    public void setCommentContent(String commentContent) {
-        this.commentContent = commentContent;
-    }
+<<<<<<< HEAD
 }
+=======
+}
+
+>>>>>>> 22e49f21a6aa7660f2fd2b661c1f4e8ba26ca2ae

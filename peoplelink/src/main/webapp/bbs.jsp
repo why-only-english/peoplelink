@@ -72,8 +72,6 @@
             <a href="write.jsp" class="btn btn-primary pull-right">글 작성</a>
         </div>
     </div>
-    <%--    <script src="js/jquery-3.7.1.min.map"></script>--%>
-    <%--    <link rel="stylesheet" href="css/bootstrap.css">--%>
-    <%--    <script src="js/bootstrap.js"></script>--%>
+
 </body>
 </html>
