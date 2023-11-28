@@ -62,27 +62,5 @@
             </div>
         </form>
     </div>
-    <div class="container">
-        <div class="row">
-            <form method="post" action="updateAction.jsp?postID=<%= postID %>">
-                <table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
-                    <thead>
-                    <tr>
-                        <th colspan="2" style="background-color: #eeeeee; text-align: center;">게시판 글 수정</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td><input type="text" class="form-control" placeholder="글 제목" name="postTitle" maxlength="50" value="<%= post.getPostTitle() %>"></td>
-                    </tr>
-                    <tr>
-                        <td><textarea class="form-control" placeholder="글 내용" name="postContent" maxlength="2048" style="height: 350px;"><%= post.getPostContent() %></textarea></td>
-                    </tr>
-                    </tbody>
-                </table>
-                <input type="submit" class="btn btn-primary pull-right" value="글 수정">
-            </form>
-        </div>
-    </div>
 </body>
 </html>

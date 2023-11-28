@@ -1,5 +1,6 @@
 package com.example.peoplelink.post;
 
+
 public class Post {
 
     private int postID;
@@ -8,10 +9,6 @@ public class Post {
     private String postDate;
     private String postContent;
     private int postAvailable;
-    private int CommentID;
-    private String commentContent;
-
-
 
 
     public int getPostID() {
@@ -62,19 +59,5 @@ public class Post {
         this.postAvailable = postAvailable;
     }
 
-    public int getCommentID() {
-        return CommentID;
-    }
-
-    public void setCommentID(int CommentID) {
-        this.CommentID = CommentID;
-    }
-
-    public String getCommentContent() {
-        return commentContent;
-    }
-
-    public void setCommentContent(String commentContent) {
-        this.commentContent = commentContent;
-    }
 }
+

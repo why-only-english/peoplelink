@@ -52,7 +52,7 @@
             <span>•몇시간 전</span>
             <img src="./png/more.png" alt="더보기 버튼" class="more-btn">
 
-            <div class="more-options" style="display: none;">
+            <div class="more-options">
                 <% if (userID != null && userID.equals(list.get(i).getUserID())) { %>
                 <a href="update.jsp?postID=<%= list.get(i).getPostID() %>">수정</a>
                 <a onclick="return confirm('게시글을 삭제하시겠어요?')"
@@ -65,14 +65,16 @@
             </div>
             <div class="icon-container">
                 <img src="./png/heart.png" alt="좋아요 버튼" class="nav-icon">
-                <img src="./png/chat.png" alt="댓글 버튼" class="nav-icon">
+                <a href="view.jsp?postID=<%= list.get(i).getPostID() %>">
+                    <img src="./png/chat.png" alt="댓글 버튼" class="nav-icon">
+                </a>
             </div>
             <div class="contents-container">
-                <h2>
-                    <a href="view.jsp?postID=<%= list.get(i).getPostID() %>"><%= list.get(i).getPostTitle() %>
-                    </a>
+                <h2 class="post-title">
+                    <%= list.get(i).getPostTitle() %>
                 </h2>
-                <p><%= list.get(i).getPostContent() %>
+                <p>
+                    <%= list.get(i).getPostContent() %>
                 </p>
             </div>
         </div>

@@ -32,13 +32,18 @@
     position: absolute;
     top: 5%;
     right: 0;
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 80px;
+    border: 15px;
     background-color: #67B5FA;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 10px;
     z-index: 1;
     flex-direction: column;
+}
+.more-options a{
+    text-decoration-line: none;
+    font-size: 24px;
+    color: white;
 }
 .post-img-box {
     width: 468px;
@@ -46,9 +51,14 @@
     margin-top: 16px;
     border: 1px solid;
 }
-
 .icon-container {
     margin-top: 12px;
+}
+.post-title{
+    margin-bottom: 20px;
+}
+.post-content{
+    font-size: 126px;
 }
 
 .contents-container {
