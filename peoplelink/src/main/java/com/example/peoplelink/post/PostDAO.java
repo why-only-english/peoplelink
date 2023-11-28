@@ -159,4 +159,29 @@ public class PostDAO {
         }
         return -1;  // 데이터베이스 오류
     }
+
+    // 검색된 게시글 가져오기
+    public ArrayList<Post> searchList(String postTitle, int pageNumber) {
+        String SQL11 = "SELECT * FROM POST WHERE postTitle LIKE ? AND postAvailable = 1 ORDER BY postID DESC LIMIT 10";
+        ArrayList<Post> list = new ArrayList<>();
+        try {
+            PreparedStatement pstmt = conn.prepareStatement(SQL11);
+            pstmt.setString(1, "%" + postTitle + "%");
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+                Post post = new Post();
+                post.setPostID(rs.getInt(1));
+                post.setPostTitle(rs.getString(2));
+                post.setUserID(rs.getString(3));
+                post.setPostDate(rs.getString(4));
+                post.setPostContent(rs.getString(5));
+                post.setPostAvailable(rs.getInt(6));
+                list.add(post);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
 }

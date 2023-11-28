@@ -66,6 +66,9 @@
             <%
                 }
             %>
+            <form name = "p_search">
+                <input type="button" value="검색" onclick="nwindow()"/>
+            </form>
             <a href="write.jsp" class="btn btn-primary pull-right">글 작성</a>
         </div>
     </div>
