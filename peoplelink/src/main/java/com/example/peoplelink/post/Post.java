@@ -9,12 +9,6 @@ public class Post {
     private String postDate;
     private String postContent;
     private int postAvailable;
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 22e49f21a6aa7660f2fd2b661c1f4e8ba26ca2ae
-
 
     public int getPostID() {
         return postID;
@@ -63,10 +57,4 @@ public class Post {
     public void setPostAvailable(int postAvailable) {
         this.postAvailable = postAvailable;
     }
-
-<<<<<<< HEAD
 }
-=======
-}
-
->>>>>>> 22e49f21a6aa7660f2fd2b661c1f4e8ba26ca2ae
