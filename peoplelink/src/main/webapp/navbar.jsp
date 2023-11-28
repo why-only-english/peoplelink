@@ -18,9 +18,10 @@
                 </a>
             </li>
             <li>
-                <img src="./png/search.png" alt="검색버튼" class="nav-icon">
-                <span class="nav-text">검색</span>
-
+                <a href="search.jsp">
+                    <img src="./png/search.png" alt="검색버튼" class="nav-icon">
+                    <span class="nav-text">검색</span>
+                </a>
             </li>
             <li>
                 <a href="write.jsp">
