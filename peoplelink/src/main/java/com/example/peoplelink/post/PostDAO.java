@@ -54,8 +54,8 @@ public class PostDAO {
         return -1;  // 데이터베이스 오류
     }
 
-    public int write(String postTitle, String userID, String postContent) {
-        String SQL5 = "INSERT INTO POST VALUES (?, ?, ?, ?, ?, ?)";
+    public int write(String postTitle, String userID, String postContent, String fileName) {
+        String SQL5 = "INSERT INTO POST VALUES (?, ?, ?, ?, ?, ?, ?)";
         try {
             PreparedStatement pstmt = conn.prepareStatement(SQL5);
             pstmt.setInt(1, getNext());
@@ -64,6 +64,7 @@ public class PostDAO {
             pstmt.setString(4, getDate());
             pstmt.setString(5, postContent);
             pstmt.setInt(6, 1);  // available 최초엔 1
+            pstmt.setString(7, fileName);
             return pstmt.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
@@ -86,6 +87,8 @@ public class PostDAO {
                 post.setPostDate(rs.getString(4));
                 post.setPostContent(rs.getString(5));
                 post.setPostAvailable(rs.getInt(6));
+                post.setFileName(rs.getString(7));
+
                 list.add(post);
             }
         } catch (Exception e) {
@@ -125,6 +128,7 @@ public class PostDAO {
                 post.setPostDate(rs.getString(4));
                 post.setPostContent(rs.getString(5));
                 post.setPostAvailable(rs.getInt(6));
+                post.setFileName(rs.getString(7));
                 return post;
             }
         } catch (Exception e) {
@@ -176,6 +180,7 @@ public class PostDAO {
                 post.setPostDate(rs.getString(4));
                 post.setPostContent(rs.getString(5));
                 post.setPostAvailable(rs.getInt(6));
+                post.setFileName(rs.getString(7));
                 list.add(post);
             }
         } catch (Exception e) {

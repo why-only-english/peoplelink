@@ -9,6 +9,15 @@ public class Post {
     private String postDate;
     private String postContent;
     private int postAvailable;
+    private String fileName;
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
 
     public int getPostID() {
         return postID;

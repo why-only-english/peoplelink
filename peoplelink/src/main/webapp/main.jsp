@@ -61,7 +61,9 @@
             </div>
 
             <div class="post-img-box">
-                asd
+<%--                <img src="./upload/<%=list.get(i).getFileName() %>" alt="사진">--%>
+                <p><%=list.get(i).getFileName() %></p>
+<%--                <img src="./upload/도시.png" alt="사진">--%>
             </div>
             <div class="icon-container">
                 <img src="./png/heart.png" alt="좋아요 버튼" class="nav-icon">

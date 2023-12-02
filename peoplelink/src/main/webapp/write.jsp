@@ -48,7 +48,7 @@
                 <input type="file" name="fileName" accept="image/*"/>
             </div>
             <div>
-                <div class="title-input">
+                <div class="atitle-input">
                     <input type="text" name="postTitle" placeholder="제목을 입력하세요"/>
                 </div>
                 <div class="text-input">

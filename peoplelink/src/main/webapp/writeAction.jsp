@@ -38,6 +38,7 @@
         String fileName = multi.getFilesystemName("fileName");
         String postTitle = multi.getParameter("postTitle");
         String postContent = multi.getParameter("postContent");
+        post.setFileName(fileName);
         post.setPostTitle(postTitle);
         post.setPostContent(postContent);
 
@@ -60,7 +61,7 @@
             }
             else {
                 PostDAO postDAO = new PostDAO();
-                int result = postDAO.write(post.getPostTitle(), userID, post.getPostContent());
+                int result = postDAO.write(post.getPostTitle(), userID, post.getPostContent(), post.getFileName());
                 // 데이터 베이스 오류
                 if (result == -1) {
                     PrintWriter script = response.getWriter();
@@ -85,6 +86,7 @@
                     script.println("location.href = 'main.jsp'");  // 게시판 페이지로 돌려주기
                     script.println("</script>");
                 }
+
                 String imageFilePath = realFolder + File.separator + (result - 1) + "사진.jpg";
                 request.setAttribute("imageFilePath", imageFilePath);
 
