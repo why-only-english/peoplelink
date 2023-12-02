@@ -22,7 +22,7 @@
     }
 
     //        String realFolder="";
-    String saveFolder = "C:\\Users\\gmfd7\\OneDrive\\문서\\instagram_jsp\\peoplelink\\src\\main\\webapp\\upload";
+    String saveFolder = "/Users/echo/Desktop/serviceProject/instagram_jsp/peoplelink/src/main/webapp/upload";
     String encType = "utf-8";
     int maxSize=5*1024*1024;
 
@@ -74,10 +74,10 @@
                 else {
                     PrintWriter script = response.getWriter();
                     if(fileName != null){
-//                        File oldFile = new File(realFolder + "\\" + fileName);
-//                        File newFile = new File(realFolder + "\\" + (result-1) + "사진.jpg");
-                        File oldFile = new File(realFolder + File.separator + fileName);
-                        File newFile = new File(realFolder + File.separator + (result - 1) + "사진.jpg");
+                        File oldFile = new File(realFolder + "\\" + fileName);
+                        File newFile = new File(realFolder + "\\" + (result-1) + "사진.jpg");
+//                        File oldFile = new File(realFolder + File.separator + fileName);
+//                        File newFile = new File(realFolder + File.separator + (result - 1) + "사진.jpg");
 
                         oldFile.renameTo(newFile);
                     }
