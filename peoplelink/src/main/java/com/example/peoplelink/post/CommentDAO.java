@@ -71,6 +71,21 @@ public class CommentDAO {
         }
     }
 
+    public void deleteComment(int commentID) {
+        try {
+            connect();
+            String SQL = "DELETE FROM Comment WHERE CommentID = ?";
+            try (PreparedStatement pstmt = conn.prepareStatement(SQL)) {
+                pstmt.setInt(1, commentID);
+                pstmt.executeUpdate();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            close();
+        }
+    }
+
     public List<Comment> getComments(int postID) {
         List<Comment> comments = new ArrayList<>();
 

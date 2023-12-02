@@ -62,4 +62,22 @@ public class UserDAO {
         }
         return -1;  // 데이터베이스 오류
     }
+
+    public User getUserInfo(String userID) {
+        String SQL = "SELECT userNickname FROM USER WHERE userID = ?";
+        try {
+            pstmt = conn.prepareStatement(SQL);
+            pstmt.setString(1, userID);
+            rs = pstmt.executeQuery();
+            if (rs.next()) {
+                User user = new User();
+                user.setUserNickname(rs.getString("userNickname"));
+                return user;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;  // 데이터베이스 오류 또는 해당 유저 정보가 없을 경우
+    }
+
 }

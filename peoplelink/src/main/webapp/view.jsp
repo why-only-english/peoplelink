@@ -46,7 +46,7 @@
     <h1 class="title"><%= post.getPostTitle() %>
     </h1>
     <a href="./main.jsp"><img class="close-img" src="./png/close.png"></a>
-
+ㅁ
     <div class="post-container">
         <div class="img-box"></div>
         <div>
@@ -60,9 +60,12 @@
                     <!-- 댓글 목록 표시 -->
                     <% for (Comment comment : comments) { %>
                     <li>
-                        <%= comment.getUserID() %> : <%= comment.getCommentContent() %>
-                    </li>
-                    <% } %>
+                            <%= comment.getUserID() %> : <%= comment.getCommentContent() %>
+                            <% if (userID != null && userID.equals(comment.getUserID())) { %>
+                        <a style="color: red; text-decoration: none;" onclick="return confirm('댓글을 삭제하시겠어요?')"
+                           href="deleteComment.jsp?commentID=<%= comment.getCommentID() %>">삭제</a>
+                            <% } %>
+                            <% } %>
                 </ul>
             </div>
             <!-- 댓글 작성 폼 추가 -->
