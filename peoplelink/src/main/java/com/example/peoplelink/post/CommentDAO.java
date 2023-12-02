@@ -5,12 +5,13 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.List;
 
 public class CommentDAO {
 
-    // 기존 코드와 동일한 DB 연결 및 기능
     private Connection conn;
     private ResultSet rs;
+
     public CommentDAO() {
         try {
             String dbURL = "jdbc:mysql://localhost:3306/PL";
@@ -22,52 +23,82 @@ public class CommentDAO {
             e.printStackTrace();
         }
     }
-    public int writeComment(int postID, String userID, String content) {
-        String SQL = "INSERT INTO Comment (postID, userID, Content) VALUES (?, ?, ?)";
+
+    public void close() {
         try {
-            PreparedStatement pstmt = conn.prepareStatement(SQL);
-            pstmt.setInt(1, postID);
-            pstmt.setString(2, userID);
-            pstmt.setString(3, content);
-            return pstmt.executeUpdate();
+            if (rs != null) rs.close();
+            if (conn != null) conn.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return -1;  // 데이터베이스 오류
     }
 
-
-    public int deleteComment(int commentID) {
-        String SQL = "DELETE FROM Comment WHERE CommentID = ?";
-        try {
-            PreparedStatement pstmt = conn.prepareStatement(SQL);
-            pstmt.setInt(1, commentID);
-            return pstmt.executeUpdate();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return -1;  // 데이터베이스 오류
+    public void connect() {
+        // Connection 연결 등
     }
 
-    public ArrayList<Comment> getComments(int postID) {
-        String SQL = "SELECT * FROM Comment WHERE postID = ?";
-        ArrayList<Comment> comments = new ArrayList<>();
+    public int getNextCommentID() {
+        String SQL = "SELECT CommentID FROM Comment ORDER BY CommentID DESC";
         try {
             PreparedStatement pstmt = conn.prepareStatement(SQL);
-            pstmt.setInt(1, postID);
             rs = pstmt.executeQuery();
-            while (rs.next()) {
-                Comment comment = new Comment();
-                comment.setCommentID(rs.getInt("CommentID"));
-                comment.setPostID(rs.getInt("postID"));
-                comment.setUserID(rs.getString("userID"));
-                comment.setContent(rs.getString("Content"));
-                comments.add(comment);
+            if (rs.next()) {
+                return rs.getInt(1) + 1;
+            }
+            return 1; // 첫 번째 댓글인 경우
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return -1;  // 데이터베이스 오류
+    }
+
+    public void insertComment(int postID, String userID, String content) {
+        try {
+            connect();
+            String SQL = "INSERT INTO Comment (CommentID, postID, userID, Content) VALUES (?, ?, ?, ?)";
+            try (PreparedStatement pstmt = conn.prepareStatement(SQL)) {
+                pstmt.setInt(1, getNextCommentID()); // CommentID 설정
+                pstmt.setInt(2, postID);
+                pstmt.setString(3, userID);
+                pstmt.setString(4, content);
+
+                pstmt.executeUpdate();
             }
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            close();
         }
+    }
+
+    public List<Comment> getComments(int postID) {
+        List<Comment> comments = new ArrayList<>();
+
+        try {
+            connect();
+            String SQL = "SELECT * FROM Comment WHERE postID = ?";
+            try (PreparedStatement pstmt = conn.prepareStatement(SQL)) {
+                pstmt.setInt(1, postID);
+                try (ResultSet resultSet = pstmt.executeQuery()) {
+                    while (resultSet.next()) {
+                        Comment comment = new Comment();
+                        comment.setCommentID(resultSet.getInt("CommentID"));
+                        comment.setPostID(postID);
+                        comment.setUserID(resultSet.getString("UserID"));
+                        comment.setCommentContent(resultSet.getString("Content"));
+
+                        comments.add(comment);
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            close();
+        }
+
         return comments;
     }
-    // 다른 필요한 댓글 관련 메서드들도 추가할 수 있습니다.
+
+    // 추가적인 메서드 및 기능들을 필요에 따라 구현해주세요.
 }

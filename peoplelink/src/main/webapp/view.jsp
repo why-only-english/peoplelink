@@ -5,10 +5,7 @@
 <%@ page import="com.example.peoplelink.post.PostDAO" %>
 <%@ page import="com.example.peoplelink.post.Comment" %>
 <%@ page import="com.example.peoplelink.post.CommentDAO" %>
-
-<%
-    CommentDAO commentDAO = new CommentDAO();
-%>
+<% CommentDAO commentDAO = new CommentDAO(); %>
 
 <!DOCTYPE html>
 <html>
@@ -18,9 +15,7 @@
     <link rel="stylesheet" href="./css/view.css">
 </head>
 <script>
-    function goBack() {
-        window.history.back();
-    }
+
 </script>
 <body>
 <%
@@ -36,27 +31,41 @@
     }
 
     Post post = new PostDAO().getPost(postID);
-    ArrayList<Comment> comments = commentDAO.getComments(postID);
+    ArrayList<Comment> comments = (ArrayList<Comment>) commentDAO.getComments(postID);
+
+    // 댓글 추가 처리
+    if (userID != null && request.getMethod().equalsIgnoreCase("POST")) {
+        String postComment = request.getParameter("postComment");
+        if (postComment != null && !postComment.trim().isEmpty()) {
+            commentDAO.insertComment(postID, userID, postComment);
+        }
+    }
 %>
 
 <div id="viewContainer">
-    <h1 class="title"><%= post.getPostTitle() %></h1>
-    <div><img class="close-img" src="./png/close.png" onclick="goBack()"></div>
+    <h1 class="title"><%= post.getPostTitle() %>
+    </h1>
+    <a href="./main.jsp"><img class="close-img" src="./png/close.png"></a>
 
     <div class="post-container">
         <div class="img-box"></div>
         <div>
             <div class="title-box">
                 작성자 : <%= post.getUserID() %> <br>
-                내용 : <%= post.getPostContent().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br>") %>
+                내용
+                : <%= post.getPostContent().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br>") %>
             </div>
             <div class="content-box">
                 <ul>
+                    <!-- 댓글 목록 표시 -->
                     <% for (Comment comment : comments) { %>
-                    <li><strong><%= comment.getUserID() %></strong>: <%= comment.getContent() %></li>
+                    <li>
+                        <%= comment.getUserID() %> : <%= comment.getCommentContent() %>
+                    </li>
                     <% } %>
                 </ul>
             </div>
+            <!-- 댓글 작성 폼 추가 -->
             <form method="post" action="commentAction.jsp">
                 <input type="hidden" name="postID" value="<%= postID %>">
                 <input type="text" class="comment-input" name="postComment" placeholder="댓글 달기..."/>

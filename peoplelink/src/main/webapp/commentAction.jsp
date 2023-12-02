@@ -1,66 +1,35 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ page import="com.example.peoplelink.post.CommentDAO" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.io.PrintWriter" %>
-<%@ page import="com.example.peoplelink.post.Comment" %>
-<jsp:useBean id="comment" class="com.example.peoplelink.post.Comment" scope="page" />
-<jsp:setProperty name="comment" property="content" />
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>PeopleLink</title>
-</head>
-<body>
+<%@ page import="com.example.peoplelink.post.CommentDAO" %>
+
 <%
-    String userID = null;
-    if (session.getAttribute("userID") != null) {
-        userID = (String) session.getAttribute("userID");
-    }
+    // 사용자 세션 확인
+    String userID = (String) session.getAttribute("userID");
     if (userID == null) {
         PrintWriter script = response.getWriter();
         script.println("<script>");
-        script.println("alert('로그인을 하세요.');");
-        script.println("location.href = 'login.jsp'");
+        script.println("alert('로그인 후 이용해주세요.');");
+        script.println("location.href='login.jsp';"); // 로그인 페이지로 리다이렉션
         script.println("</script>");
-    }
-    // 로그인이 되어 있을 때
-    else {
-        // 사용자가 입력한 댓글 내용 가져오기
-        String commentContent = request.getParameter("postComment").trim();
+    } else {
+        // POST 요청 처리
+        int postID = (request.getParameter("postID") != null) ? Integer.parseInt(request.getParameter("postID")) : 0;
+        String postComment = request.getParameter("postComment");
 
-        // 사용자가 입력 안 한 항목이 있을 때
-        if (commentContent.isEmpty()) {
+        if (postID != 0 && postComment != null && !postComment.trim().isEmpty()) {
+            // 댓글 DAO를 사용해 댓글 추가
+            CommentDAO commentDAO = new CommentDAO();
+            commentDAO.insertComment(postID, userID, postComment);
+
+            // 게시글 페이지로 리다이렉션
+            response.sendRedirect("view.jsp?postID=" + postID);
+        } else {
+            // 유효하지 않은 입력 처리
             PrintWriter script = response.getWriter();
             script.println("<script>");
-            script.println("alert('입력이 안 된 항목이 있습니다.');");
-            script.println("history.back();");  // 이전 페이지로 돌려주기
+            script.println("alert('댓글을 작성해주세요.');");
+            script.println("history.back();");
             script.println("</script>");
-        }
-        else {
-            int postID = Integer.parseInt(request.getParameter("postID"));
-            CommentDAO commentDAO = new CommentDAO();
-
-            // 댓글 작성 부분
-            int result = commentDAO.writeComment(postID, userID, commentContent);
-
-            // 데이터 베이스 오류
-            if (result == -1) {
-                PrintWriter script = response.getWriter();
-                script.println("<script>");
-                script.println("alert('댓글 작성에 실패했습니다.');");
-                script.println("history.back();");  // 이전 페이지로 돌려주기
-                script.println("</script>");
-            }
-            else {
-                PrintWriter script = response.getWriter();
-                script.println("<script>");
-                script.println("alert('댓글 작성이 완료되었습니다.');");
-                script.println("history.back();");  // 이전 페이지로 돌려주기
-                script.println("</script>");
-            }
         }
     }
 %>
-
-</body>
-</html>

@@ -1,18 +1,14 @@
 package com.example.peoplelink.post;
 
+
 public class Comment {
+
     private int commentID;
     private int postID;
     private String userID;
-    private String content;
+    private String commentContent;
 
-    public int getCommentID() {
-        return commentID;
-    }
-
-    public void setCommentID(int commentID) {
-        this.commentID = commentID;
-    }
+    // 생성자, 다른 필드에 대한 getter, setter 등은 생략
 
     public int getPostID() {
         return postID;
@@ -20,6 +16,14 @@ public class Comment {
 
     public void setPostID(int postID) {
         this.postID = postID;
+    }
+
+    public int getCommentID() {
+        return commentID;
+    }
+
+    public void setCommentID(int commentID) {
+        this.commentID = commentID;
     }
 
     public String getUserID() {
@@ -30,11 +34,11 @@ public class Comment {
         this.userID = userID;
     }
 
-    public String getContent() {
-        return content;
+    public String getCommentContent() {
+        return commentContent;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setCommentContent(String commentContent) {
+        this.commentContent = commentContent;
     }
 }
