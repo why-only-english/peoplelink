@@ -40,12 +40,12 @@
 <%--    </div>--%>
 <%--</div>--%>
 <div id="createContainer">
-    <form method="post" action="writeAction.jsp">
+    <form method="post" action="writeAction.jsp" enctype="multipart/form-data">
         <h1 class="title">새 게시물 만들기</h1>
         <input type="submit" class="share-btn" value="공유">
         <div class="input-container">
             <div class="img-input">
-                <input type="file" accept="image/*"/>
+                <input type="file" name="fileName" accept="image/*"/>
             </div>
             <div>
                 <div class="title-input">

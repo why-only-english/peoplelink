@@ -54,8 +54,8 @@ public class PostDAO {
         return -1;  // 데이터베이스 오류
     }
 
-    public int write(String postTitle, String userID, String postContent, String fileName) {
-        String SQL5 = "INSERT INTO POST VALUES (?, ?, ?, ?, ?, ?, ?)";
+    public int write(String postTitle, String userID, String postContent) {
+        String SQL5 = "INSERT INTO POST VALUES (?, ?, ?, ?, ?, ?)";
         try {
             PreparedStatement pstmt = conn.prepareStatement(SQL5);
             pstmt.setInt(1, getNext());
@@ -63,8 +63,7 @@ public class PostDAO {
             pstmt.setString(3, userID);
             pstmt.setString(4, getDate());
             pstmt.setString(5, postContent);
-            pstmt.setString(6, fileName);  // 파일 이름 추가
-            pstmt.setInt(7, 1);  // available 최초엔 1
+            pstmt.setInt(6, 1);  // available 최초엔 1
             return pstmt.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
