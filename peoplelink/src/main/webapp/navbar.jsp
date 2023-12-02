@@ -6,6 +6,12 @@
     <title>PeopleLink</title>
     <link rel="stylesheet" href="./css/navbar.css">
 </head>
+<style>
+    a, a:hover {
+        color: #000000;
+        text-decoration: none;
+    }
+</style>
 <body>
 <div id="mainContainer">
     <div id="navContainer">

@@ -6,78 +6,79 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>PeopleLink</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-
-  <style type="text/css">
-    a, a:hover {
-      color : #000000;
-      text-decoration: none;
-    }
-  </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PeopleLink</title>
+    <link rel="stylesheet" href="./css/main.css">
+    <style type="text/css">
+        a, a:hover {
+            color: #000000;
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
 <%
-  String userID = null;
-  if (session.getAttribute("userID") != null) {
-    userID = (String) session.getAttribute("userID");
-  }
-  int pageNumber = 1;
-  if (request.getParameter("pageNumber") != null) {
-    pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
-  }
-  String search = request.getParameter("search");
-  if(request.getParameter("search") != null){
-    search = request.getParameter("search");
-  }
+    String userID = null;
+    if (session.getAttribute("userID") != null) {
+        userID = (String) session.getAttribute("userID");
+    }
+    int pageNumber = 1;
+    if (request.getParameter("pageNumber") != null) {
+        pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
+    }
+    String search = request.getParameter("search");
+    if (request.getParameter("search") != null) {
+        search = request.getParameter("search");
+    }
 %>
+<div style="display: flex;">
+    <%@ include file="navbar.jsp" %>
 
-<div class="container">
-  <div class="row">
-    <table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
-      <thead>
-      <tr>
-        <th style="background-color: #eeeeee; text-align: center;">번호</th>
-        <th style="background-color: #eeeeee; text-align: center;">제목</th>
-        <th style="background-color: #eeeeee; text-align: center;">작성자</th>
-      </tr>
-      </thead>
-      <tbody>
-      <%
-        PostDAO postDAO = new PostDAO();
-        ArrayList<Post> list = postDAO.searchList(search, pageNumber);
-        for (int i = 0; i < list.size(); i++) {
-      %>
-      <tr>
-        <td><%= list.get(i).getPostID() %></td>
-        <td><a href="view.jsp?postID=<%= list.get(i).getPostID() %>"><%= list.get(i).getPostTitle() %></a></td>
-        <td><%= list.get(i).getUserID() %></td>
-      </tr>
-      <%
-        }
-      %>
-      </tbody>
-    </table>
-    <%
-      if (pageNumber != 1) {
-    %>
-    <a href="bbs.jsp?pageNumber=<%=pageNumber - 1%>" class="btn btn-success btn-arrow-left">이전</a>
-    <%
-      } if (postDAO.nextPage(pageNumber + 1)) {
-    %>
-    <a href="bbs.jsp?pageNumber=<%=pageNumber + 1%>" class="btn btn-success btn-arrow-left">다음</a>
-    <%
-      }
-    %>
-    <form name = "p_search">
-      <input type="button" value="검색" onclick="nwindow()"/>
-    </form>
-    <a href="write.jsp" class="btn btn-primary pull-right">글 작성</a>
-  </div>
+    <div style="margin-left: 32px;
+    width: 630px;
+    display: flex;
+    flex-direction: column;">
+        <%
+            PostDAO postDAO = new PostDAO();
+            ArrayList<Post> list = postDAO.searchList(search, pageNumber);
+            for (int i = 0; i < list.size(); i++) {
+        %>
+        <div class="post-container">
+            <img src="./png/account_box.png" alt="프로필 이미지" class="nav-icon">
+            <span class="post-nickname"><%= list.get(i).getUserID() %></span>
+            <span>•몇시간 전</span>
+            <img src="./png/more.png" alt="더보기 버튼" class="more-btn">
+
+            <div class="more-options">
+                <% if (userID != null && userID.equals(list.get(i).getUserID())) { %>
+                <a href="update.jsp?postID=<%= list.get(i).getPostID() %>">수정</a>
+                <a onclick="return confirm('게시글을 삭제하시겠어요?')"
+                   href="deleteAction.jsp?postID=<%= list.get(i).getPostID() %>">삭제</a>
+                <% } %>
+            </div>
+
+            <div class="post-img-box">
+                asd
+            </div>
+            <div class="icon-container">
+                <img src="./png/heart.png" alt="좋아요 버튼" class="nav-icon">
+                <a href="view.jsp?postID=<%= list.get(i).getPostID() %>">
+                    <img src="./png/chat.png" alt="댓글 버튼" class="nav-icon">
+                </a>
+            </div>
+            <div class="contents-container">
+                <h2 class="post-title">
+                    <%= list.get(i).getPostTitle() %>
+                </h2>
+                <p>
+                    <%= list.get(i).getPostContent() %>
+                </p>
+            </div>
+        </div>
+        <%
+            }
+        %>
+    </div>
 </div>
-<%--    <script src="js/jquery-3.7.1.min.map"></script>--%>
-<%--    <link rel="stylesheet" href="css/bootstrap.css">--%>
-<%--    <script src="js/bootstrap.js"></script>--%>
 </body>
 </html>
