@@ -26,18 +26,6 @@
             </span>
     </div>
 </div>
-<%--        <input type="text" class="form-control" placeholder="아이디" name="userID" maxlength="20">--%>
-<%--    </div>--%>
-<%--    <div class="form-group">--%>
-<%--        <input type="password" class="form-control" placeholder="비밀번호" name="userPassword" maxlength="20">--%>
-<%--    </div>--%>
-<%--    <div class="form-group">--%>
-<%--        <input type="text" class="form-control" placeholder="닉네임" name="userNickname" maxlength="20">--%>
-<%--    </div>--%>
-<%--    <div class="form-group">--%>
-<%--        <input type="email" class="form-control" placeholder="이메일" name="userEmail" maxlength="50">--%>
-<%--    </div>--%>
-<%--    <input type="submit" class="btn btn-primary form-control" value="회원가입">--%>
 </div>
 </body>
 </html>

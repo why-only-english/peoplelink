@@ -6,12 +6,18 @@
     <title>PeopleLink</title>
     <link rel="stylesheet" href="./css/navbar.css">
 </head>
+
 <style>
     a, a:hover {
         color: #000000;
         text-decoration: none;
     }
 </style>
+<script>
+    function logout(){
+        window.location.href = 'login.jsp'; // 서버 측 로그아웃 처리 페이지로 이동
+    }
+</script>
 <body>
 <div id="mainContainer">
     <div id="navContainer">
@@ -40,6 +46,9 @@
                     <img src="./png/account_box.png" alt="프로필 버튼" class="nav-icon">
                     <span class="nav-text">프로필</span>
                 </a>
+            </li>
+            <li>
+                <button style="width: 240px; height: 50px; font-size: 24px;" onclick="logout()">로그아웃</button>
             </li>
         </ul>
     </div>

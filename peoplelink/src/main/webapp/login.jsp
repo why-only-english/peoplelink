@@ -7,7 +7,12 @@
     <link rel="stylesheet" href="./css/login.css">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
+<script>
+</script>
 <body>
+<%
+    session.invalidate(); // 세션 무효화
+%>
 <div id="loginContainer">
     <div id="leftContainer">
 
@@ -23,7 +28,7 @@
                 <span>
                     계정이 없으신가요?
                 </span>
-            <a href="./join.jsp" class="join-membership">가입하기</a>
+            <a href="./join.jsp" class="join-membership" onclick="logout()">가입하기</a>
         </div>
     </div>
 </div>

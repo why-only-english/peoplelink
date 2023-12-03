@@ -18,6 +18,8 @@
     <div id="myProfile">
         <div class="data-container">
             <div class="my-img">
+                <img style="height: 100px; width: 100px; margin-top: 20px;" src="./png/account_box.png" alt="프로필 이미지"
+                     class="nav-icon">
             </div>
             <div class="right-data-container">
             <span>
@@ -33,9 +35,6 @@
                     }
                 %>
             </span>
-                <span>
-                게시글 수
-            </span>
             </div>
         </div>
         <div class="my-post-list">
@@ -46,10 +45,12 @@
                 if (userPosts != null && !userPosts.isEmpty()) {
                     for (Post post : userPosts) {
             %>
-                <div class="post-box">
-                    <p><%= post.getPostTitle() %></p>
-                    <p><%= post.getPostContent() %></p>
-                </div>
+            <div class="post-box">
+                <a href="view.jsp?postID=<%= post.getPostID() %>">
+                    <img style="width: 194px; height: 194px;" src="upload/<%=post.getFileName()%>">
+                </a>
+
+            </div>
             <%
                     }
                 } else {

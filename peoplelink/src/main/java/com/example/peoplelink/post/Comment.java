@@ -8,6 +8,7 @@ public class Comment {
     private String userID;
     private String commentContent;
 
+
     // 생성자, 다른 필드에 대한 getter, setter 등은 생략
 
     public int getPostID() {
