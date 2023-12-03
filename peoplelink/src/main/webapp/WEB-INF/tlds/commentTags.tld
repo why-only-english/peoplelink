@@ -1,0 +1,28 @@
+<!-- 예시: /WEB-INF/tlds/commentTags.tld -->
+<taglib xmlns="http://java.sun.com/xml/ns/javaee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+        http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
+        version="2.1">
+    <tlib-version>1.0</tlib-version>
+    <short-name>commentTags</short-name>
+    <uri>http://example.com/commentTags</uri>
+
+    <tag>
+        <name>commentList</name>
+        <tag-class>com.example.peoplelink.tags.CommentListTag</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <name>postID</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.Integer</type>
+        </attribute>
+        <attribute>
+            <name>userID</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+    </tag>
+</taglib>

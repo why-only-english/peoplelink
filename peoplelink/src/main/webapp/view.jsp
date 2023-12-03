@@ -5,8 +5,8 @@
 <%@ page import="com.example.peoplelink.post.PostDAO" %>
 <%@ page import="com.example.peoplelink.post.Comment" %>
 <%@ page import="com.example.peoplelink.post.CommentDAO" %>
+<%@ taglib prefix="custom" uri="http://example.com/commentTags" %>
 <% CommentDAO commentDAO = new CommentDAO(); %>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,7 +26,7 @@
         PrintWriter script = response.getWriter();
         script.println("<script>");
         script.println("alert('유효하지 않은 글입니다.');");
-        script.println("location.href = 'bbs.jsp'");
+        script.println("location.href = 'main.jsp'");
         script.println("</script>");
     }
 
@@ -45,10 +45,12 @@
 <div id="viewContainer">
     <h1 class="title"><%= post.getPostTitle() %>
     </h1>
-    <a href="./main.jsp"><img class="close-img" src="./png/close.png"></a>
-ㅁ
+    <a href="./main.jsp"><img class="close-img" src="./png/close.png" alt="개시글 이미지"></a>
+
     <div class="post-container">
-        <div class="img-box"></div>
+        <div class="img-box">
+            <img style="width: 468px; height: 468px;" src="upload/<%= post.getFileName() %>">
+        </div>
         <div>
             <div class="title-box">
                 작성자 : <%= post.getUserID() %> <br>
@@ -56,19 +58,11 @@
                 : <%= post.getPostContent().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br>") %>
             </div>
             <div class="content-box">
-                <ul>
-                    <!-- 댓글 목록 표시 -->
-                    <% for (Comment comment : comments) { %>
-                    <li>
-                            <%= comment.getUserID() %> : <%= comment.getCommentContent() %>
-                            <% if (userID != null && userID.equals(comment.getUserID())) { %>
-                        <a style="color: red; text-decoration: none;" onclick="return confirm('댓글을 삭제하시겠어요?')"
-                           href="deleteComment.jsp?commentID=<%= comment.getCommentID() %>">삭제</a>
-                            <% } %>
-                            <% } %>
-                </ul>
+                <div class="content-box">
+                    <!-- 커스텀 태그를 사용하여 댓글 목록 표시 -->
+                    <custom:commentList postID="<%= postID %>" userID="<%= userID %>"/>
+                </div>
             </div>
-            <!-- 댓글 작성 폼 추가 -->
             <form method="post" action="commentAction.jsp">
                 <input type="hidden" name="postID" value="<%= postID %>">
                 <input type="text" class="comment-input" name="postComment" placeholder="댓글 달기..."/>

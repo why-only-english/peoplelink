@@ -23,11 +23,16 @@
         userID = (String) session.getAttribute("userID");
     }
 
+<<<<<<< HEAD
 //    String saveFolder = "C:\\Users\\gmfd7\\OneDrive\\문서\\instagram_jsp\\peoplelink\\src\\main\\webapp\\upload";
     ServletContext context = getServletConfig().getServletContext();
     String saveFolder = ".";
     String realFolder = context.getRealPath(saveFolder);
 
+=======
+    //        String realFolder="";
+    String saveFolder = "/Users/echo/Desktop/serviceProject/instagram_jsp/peoplelink/src/main/webapp/upload";
+>>>>>>> 24065a0f6b51ce786a7ef6c3adafb97bf29fcad3
     String encType = "utf-8";
     int maxSize=5*1024*1024;
 
@@ -78,10 +83,15 @@
                 else {
                     PrintWriter script = response.getWriter();
                     if(fileName != null){
+<<<<<<< HEAD
 //                        File oldFile = new File(realFolder + "\\" + fileName);
 //                        File newFile = new File(realFolder + "\\" + (result-1) + "사진.jpg");
                         File oldFile = new File(realFolder + File.separator + fileName);
                         File newFile = new File(realFolder + File.separator + (result - 1) + "사진.jpg");
+=======
+                        File oldFile = new File(realFolder + "\\" + fileName);
+                        File newFile = new File(realFolder + "\\" + (result-1) + "사진.jpg");
+>>>>>>> 24065a0f6b51ce786a7ef6c3adafb97bf29fcad3
                         oldFile.renameTo(newFile);
                     }
                     script.println("<script>");

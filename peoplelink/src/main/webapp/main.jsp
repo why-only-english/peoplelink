@@ -60,6 +60,7 @@
             </div>
 
             <div class="post-img-box">
+<<<<<<< HEAD
                 <img src="./upload/<%=list.get(i).getFileName() %>" alt="사진">
                 <img src="./upload/airplain_line.png" alt="사진">
                 <p>
@@ -68,6 +69,9 @@
                     <%= list.get(i).getFileName() %>
                 </p>
 <%--                <img src="./upload/도시.png" alt="사진">--%>
+=======
+                <img style="width: 468px; height: 468px;" src="upload/<%=list.get(i).getFileName()%>">
+>>>>>>> 24065a0f6b51ce786a7ef6c3adafb97bf29fcad3
             </div>
             <div class="icon-container">
                 <img src="./png/heart.png" alt="좋아요 버튼" class="nav-icon">
