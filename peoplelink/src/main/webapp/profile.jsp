@@ -2,6 +2,8 @@
 <%@ page import="java.io.PrintWriter" %>
 <%@ page import="com.example.peoplelink.user.User" %>
 <%@ page import="com.example.peoplelink.user.UserDAO" %>
+<%@ page import="com.example.peoplelink.post.Post" %>
+<%@ page import="java.util.List" %>
 
 <!DOCTYPE html>
 <html>
@@ -37,21 +39,24 @@
             </div>
         </div>
         <div class="my-post-list">
-            <div class="post-box">
+            <%
+                UserDAO userDAO = new UserDAO();
+                List<Post> userPosts = userDAO.getUserPosts(loggedInUserID);
 
-            </div>
-            <div class="post-box">
-
-            </div>
-            <div class="post-box">
-
-            </div>
-            <div class="post-box">
-
-            </div>
-            <div class="post-box">
-
-            </div>
+                if (userPosts != null && !userPosts.isEmpty()) {
+                    for (Post post : userPosts) {
+            %>
+                <div class="post-box">
+                    <p><%= post.getPostTitle() %></p>
+                    <p><%= post.getPostContent() %></p>
+                </div>
+            <%
+                    }
+                } else {
+                    // 사용자가 작성한 게시글이 없는 경우
+                    out.println("작성한 게시글이 없습니다.");
+                }
+            %>
         </div>
     </div>
 </div>

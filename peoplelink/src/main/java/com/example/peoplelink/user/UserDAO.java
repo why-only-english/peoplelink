@@ -1,11 +1,15 @@
 package com.example.peoplelink.user;
 
+import com.example.peoplelink.post.Post;
+
 import javax.servlet.annotation.WebServlet;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Connection;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserDAO {
 
@@ -79,5 +83,32 @@ public class UserDAO {
         }
         return null;  // 데이터베이스 오류 또는 해당 유저 정보가 없을 경우
     }
+
+    // 내가 쓴 글 가져오기
+    public List<Post> getUserPosts(String userID) {
+        String SQL3 = "SELECT * FROM POST WHERE userID = ?";
+        try {
+            PreparedStatement pstmt = conn.prepareStatement(SQL3);
+            pstmt.setString(1, userID);
+            rs = pstmt.executeQuery();
+            List<Post> userPosts = new ArrayList<>();
+            while (rs.next()) {
+                Post post = new Post();
+                post.setPostID(rs.getInt(1));
+                post.setPostTitle(rs.getString(2));
+                post.setUserID(rs.getString(3));
+                post.setPostDate(rs.getString(4));
+                post.setPostContent(rs.getString(5));
+                post.setPostAvailable(rs.getInt(6));
+                post.setFileName(rs.getString(7));
+                userPosts.add(post);
+            }
+            return userPosts;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 
 }
