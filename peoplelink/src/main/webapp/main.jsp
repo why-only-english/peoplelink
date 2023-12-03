@@ -60,8 +60,13 @@
             </div>
 
             <div class="post-img-box">
-<%--                <img src="./upload/<%=list.get(i).getFileName() %>" alt="사진">--%>
-                <p><%=list.get(i).getFileName() %></p>
+                <img src="./upload/<%=list.get(i).getFileName() %>" alt="사진">
+                <img src="./upload/airplain_line.png" alt="사진">
+                <p>
+                    <%= list.get(i).getFileName() %>
+                    <%= list.get(i).getFileName() %>
+                    <%= list.get(i).getFileName() %>
+                </p>
 <%--                <img src="./upload/도시.png" alt="사진">--%>
             </div>
             <div class="icon-container">

@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.List;
 
 public class PostDAO {
 
@@ -88,7 +89,6 @@ public class PostDAO {
                 post.setPostContent(rs.getString(5));
                 post.setPostAvailable(rs.getInt(6));
                 post.setFileName(rs.getString(7));
-
                 list.add(post);
             }
         } catch (Exception e) {
@@ -189,4 +189,27 @@ public class PostDAO {
         return list;
     }
 
+    public List<Post> getUserPostsList(String userId) {
+        String SQL13 = "SELECT * FROM POST WHERE userID = ? AND postAvailable = 1 ORDER BY postID DESC";
+        List<Post> list = new ArrayList<>();
+        try {
+            PreparedStatement pstmt = conn.prepareStatement(SQL13);
+            pstmt.setString(1, userId);
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+                Post post = new Post();
+                post.setPostID(rs.getInt(1));
+                post.setPostTitle(rs.getString(2));
+                post.setUserID(rs.getString(3));
+                post.setPostDate(rs.getString(4));
+                post.setPostContent(rs.getString(5));
+                post.setPostAvailable(rs.getInt(6));
+                post.setFileName(rs.getString(7));
+                list.add(post);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
 }

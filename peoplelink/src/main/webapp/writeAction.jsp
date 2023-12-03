@@ -8,6 +8,8 @@
 <%@ page import="java.io.File" %>
 <jsp:setProperty name="post" property="postTitle" />
 <jsp:setProperty name="post" property="postContent" />
+<jsp:setProperty name="post" property="fileName" />
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,13 +23,14 @@
         userID = (String) session.getAttribute("userID");
     }
 
-    //        String realFolder="";
-    String saveFolder = "C:\\Users\\gmfd7\\OneDrive\\문서\\instagram_jsp\\peoplelink\\src\\main\\webapp\\upload";
+//    String saveFolder = "C:\\Users\\gmfd7\\OneDrive\\문서\\instagram_jsp\\peoplelink\\src\\main\\webapp\\upload";
+    ServletContext context = getServletConfig().getServletContext();
+    String saveFolder = ".";
+    String realFolder = context.getRealPath(saveFolder);
+
     String encType = "utf-8";
     int maxSize=5*1024*1024;
 
-//        ServletContext context = getServletConfig().getServletContext();
-    String realFolder = saveFolder;
 
     try {
         MultipartRequest multi = null;
@@ -36,6 +39,7 @@
 
         // form으로 전달받은 3가지를 가져온다
         String fileName = multi.getFilesystemName("fileName");
+//        String fileName = multi.getParameter("fileName");
         String postTitle = multi.getParameter("postTitle");
         String postContent = multi.getParameter("postContent");
         post.setFileName(fileName);
@@ -78,7 +82,6 @@
 //                        File newFile = new File(realFolder + "\\" + (result-1) + "사진.jpg");
                         File oldFile = new File(realFolder + File.separator + fileName);
                         File newFile = new File(realFolder + File.separator + (result - 1) + "사진.jpg");
-
                         oldFile.renameTo(newFile);
                     }
                     script.println("<script>");
