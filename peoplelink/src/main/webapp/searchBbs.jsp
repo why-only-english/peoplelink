@@ -58,7 +58,7 @@
             </div>
 
             <div class="post-img-box">
-                asd
+                <img style="width: 468px; height: 468px;" src="upload/<%=list.get(i).getFileName()%>">
             </div>
             <div class="icon-container">
                 <img src="./png/heart.png" alt="좋아요 버튼" class="nav-icon">
