@@ -1,8 +1,14 @@
-<%@ page contentType="text/plain; charset=UTF-8" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="java.io.PrintWriter" %>
 <%@ page import="com.example.peoplelink.post.CommentDAO" %>
 <%@ page import="java.io.PrintWriter" %>
-<% request.setCharacterEncoding("UTF-8"); %>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PeopleLink</title>
+</head>
+<body>
 <%
     // 댓글 삭제를 위한 commentID 파라미터 받기
     int commentID = (request.getParameter("commentID") != null) ? Integer.parseInt(request.getParameter("commentID")) : 0;
@@ -23,3 +29,6 @@
         script.println("history.back()");  // 이전 페이지로 돌려주기
         script.println("</script>");    }
 %>
+
+</body>
+</html>

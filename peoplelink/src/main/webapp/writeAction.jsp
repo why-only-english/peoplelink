@@ -76,9 +76,6 @@
                     if(fileName != null){
                         File oldFile = new File(realFolder + "\\" + fileName);
                         File newFile = new File(realFolder + "\\" + (result-1) + "사진.jpg");
-//                        File oldFile = new File(realFolder + File.separator + fileName);
-//                        File newFile = new File(realFolder + File.separator + (result - 1) + "사진.jpg");
-
                         oldFile.renameTo(newFile);
                     }
                     script.println("<script>");

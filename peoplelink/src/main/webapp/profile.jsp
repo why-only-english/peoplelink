@@ -9,14 +9,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>PeopleLink</title>
     <link rel="stylesheet" href="./css/profile.css">
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 <body>
 <div id="profileContainer">
     <%@ include file="navbar.jsp" %>
     <div id="myProfile">
         <div class="data-container">
-            <div class="my-img"></div>
+            <div class="my-img">
+            </div>
             <div class="right-data-container">
             <span>
                 <%
