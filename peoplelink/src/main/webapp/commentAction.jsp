@@ -29,7 +29,7 @@
         } else {
             script.println("<script>");
             script.println("alert('댓글을 작성해주세요.');");
-            script.println("history.back();");
+            script.println("view.jsp?postID=" + postID);
             script.println("</script>");
         }
     }

@@ -10,11 +10,8 @@
         session.invalidate();
     %>
     <script>
-        location.href = 'main.jsp';
+        location.href = 'login.jsp';
     </script>
 
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>
 </html>

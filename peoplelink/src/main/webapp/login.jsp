@@ -10,9 +10,6 @@
 <script>
 </script>
 <body>
-<%
-    session.invalidate(); // 세션 무효화
-%>
 <div id="loginContainer">
     <div id="leftContainer">
 

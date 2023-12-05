@@ -15,7 +15,7 @@
 </style>
 <script>
     function logout(){
-        window.location.href = 'login.jsp'; // 서버 측 로그아웃 처리 페이지로 이동
+        window.location.href = 'logoutAction.jsp'; // 서버 측 로그아웃 처리
     }
 </script>
 <body>
@@ -48,7 +48,7 @@
                 </a>
             </li>
             <li>
-                <button style="width: 240px; height: 50px; font-size: 24px;" onclick="logout()">로그아웃</button>
+                <button style="width: 240px; height: 50px; font-size: 24px;" onclick="logout()" >로그아웃</button>
             </li>
         </ul>
     </div>
